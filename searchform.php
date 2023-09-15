@@ -1,5 +1,9 @@
-<div class="sidebar-item search">
-    <form id="search_form" method="GET" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-        <input type="text" name="s" class="searchText" placeholder="<?php esc_attr_e( 'type to search...', 'stand-blog' ); ?>" value="<?php echo get_search_query(); ?>">
-    </form>
-</div>
+
+
+
+<form role="search" method="get" id="searchform" class="searchform search" action="<?php echo home_url('/'); ?>">
+
+    <input type="text" value="<?php echo get_search_query(); ?>" placeholder="type to search..." name="s" id="s" class="searchText">
+    
+    <input type="submit" id="searchsubmit" value="Search">
+</form>
