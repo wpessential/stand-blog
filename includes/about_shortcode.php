@@ -68,7 +68,7 @@ function firstabout($atts, $content = null)
       <div class="row">
         <div class="col-lg-12">
           <?php if ($image) {
-            echo wp_get_attachment_image(60, "full");
+            echo wp_get_attachment_image(60, "'standblog-about-image'");
             // this fucntion is used as <img> in html 
           } ?>
           <p>

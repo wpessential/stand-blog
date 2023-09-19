@@ -34,7 +34,7 @@ function home_slider($atts, $content = null)
                 <div class="owl-item" style="width: 781px; margin-right: 10px;">
 
                   <div class="item">
-                    <?php the_post_thumbnail() ?>
+                    <?php the_post_thumbnail('standblog-slider') ?>
                     <div class="item-content">
                       <div class="main-content">
                         <div class="meta-category">

@@ -236,9 +236,9 @@ header .navbar {
 	color: #1e1e1e;
 	transition: all 0.3s;
 }
-.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:hover,.navbar .navbar-nav .menu-item a:hover,
 .navbar .navbar-nav .active>.nav-link,
-.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .nav-link.active,.navbar .navbar-nav .menu-item a.active,
 .navbar .navbar-nav .nav-link.show,
 .navbar .navbar-nav .show>.nav-link {
 	color: #f48840;
@@ -285,7 +285,7 @@ header .navbar {
 	left: 40px;
 }
 
-.owl-banner .item .item-content .meta-category span {
+.owl-banner .item .item-content .meta-category span , .owl-banner .item .item-content .meta-category span a {
 	color: #f48840;
 	font-size: 18px;
 	text-transform: uppercase;
@@ -419,7 +419,7 @@ header .navbar {
 	border-bottom: 1px solid #eee;
 }
 
-.blog-posts .down-content span {
+.blog-posts .down-content span, .blog-posts .down-content span a{
 	font-size: 18px;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;

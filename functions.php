@@ -50,13 +50,28 @@ if (!function_exists('myfirsttheme_setup')):
 			array(
 				'primary' => __('Primary Menu', 'myfirsttheme'),
 				'secondary' => __('Secondary Menu', 'myfirsttheme'),
-			));
+			)
+		);
 
 		/**
 		 * Enable support for the following post formats:
 		 * aside, gallery, quote, image, and video
 		 */
 		add_theme_support('post-formats', array('aside', 'gallery', 'quote', 'image', 'video'));
+
+
+		//     =================================================================
+
+		//  registering images sizes for use
+		add_image_size('standblog-blog-post', 370, 340, true); // we used it in function the_post_thumbnail(blog-post)
+		add_image_size('standblog-slider', 520, 450, true);
+		add_image_size('standblog-home-post', 770, 340, true);
+		add_image_size('standblog-about-image', 1170, 550, true);
+		add_image_size('standblog-post-details', 770, 340, true);
+		add_image_size('standblog-comment-pics',100, 100, true);
+
+
+
 	}
 endif; // myfirsttheme_setup
 add_action('after_setup_theme', 'myfirsttheme_setup');
@@ -125,7 +140,8 @@ function standblog_sidebars()
 	register_sidebar(
 		array(
 			'name' => esc_html__('Sidebar 1', 'standblog'),
-			'id' => 'sidebar-1', // on the basis of id we are going to use this sidebar
+			'id' => 'sidebar-1',
+			// on the basis of id we are going to use this sidebar
 			'description' => esc_html__('This is sidebar.', 'standblog'),
 			'before_widget' => '<div class="col-lg-12"><div id="%1$s" class="%2$s sidebar-item">',
 			'after_widget' => '</div></div>',
@@ -144,19 +160,24 @@ add_action('widgets_init', 'standblog_sidebars');
 
 
 // 
-add_action('init', 'register_shortcode');// register the code using this hook
-function register_shortcode(){ // cstom function to registers short code which is being included in this function below 
-  include_once(get_template_directory().'\includes\about_shortcode.php');  // this will include the code from about_shortcode
+add_action('init', 'register_shortcode'); // register the code using this hook
+function register_shortcode()
+{ // cstom function to registers short code which is being included in this function below 
+	include_once(get_template_directory() . '\includes\about_shortcode.php'); // this will include the code from about_shortcode
 
-  
-  include_once(get_template_directory().'\includes\home_slider.php');
-  include_once(get_template_directory().'\includes\home_shortcode.php');
-  include_once(get_template_directory().'\includes\contact_shortcode.php');
 
-  add_shortcode('about', 'firstabout');// this adds  the short code in function first_about and it has the tag about
-  add_shortcode('slider', 'home_slider'); 
-  add_shortcode('home', 'home_shortcode');
-  add_shortcode('contact','contact_us');
+	include_once(get_template_directory() . '\includes\home_slider.php');
+	include_once(get_template_directory() . '\includes\home_shortcode.php');
+	include_once(get_template_directory() . '\includes\contact_shortcode.php');
+	include_once(get_template_directory() . '\includes\blog_entries_shortcode.php');
 
- 
+
+
+	add_shortcode('about', 'firstabout'); // this adds  the short code in function first_about and it has the tag about
+	add_shortcode('slider', 'home_slider');
+	add_shortcode('home', 'home_shortcode');
+	add_shortcode('contact', 'contact_us');
+	add_shortcode('blogs', 'blog_entries');
+
+
 }

@@ -87,7 +87,7 @@ function home_shortcode($atts, $content = null)
                     <div class="blog-post">
                       <div class="blog-thumb">
                         <?php
-                        the_post_thumbnail(); ?>
+                        the_post_thumbnail('standblog-home-post'); ?>
                       </div>
                       <div class="down-content">
                         <span>

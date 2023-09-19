@@ -54,7 +54,7 @@ while (have_posts()):
               <div class="col-lg-12">
                 <div class="blog-post">
                   <div class="blog-thumb">
-                    <?php the_post_thumbnail(); ?>
+                    <?php the_post_thumbnail('standblog-post-details'); ?>
                   </div>
                   <div class="down-content">
                     <span>
@@ -95,7 +95,7 @@ while (have_posts()):
                   </div>
                 </div>
               </div>
-              <?php comments_template(); ?>
+              <?php comments_template();   // includes comments.php?>
             </div>
           </div>
         </div>
