@@ -3,8 +3,6 @@ function contact_us($atts, $content = null)
 {
   $user_inputs = array(
 
-    'banner_title' => '',
-    'banner_heading' => '',
     'form_title' => '',
     'contactbar_heading' => '',
     'phone_label' => '',
@@ -38,26 +36,8 @@ function contact_us($atts, $content = null)
 
 
 
-  <div class="heading-page header-text">
-    <section class="page-heading">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="text-content">
-              <h4>
-                <?php echo esc_html($banner_title) ?>
-              </h4>
-              <h2>
-                <?php echo esc_html($banner_heading) ?>
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
 
-  <!-- Banner Ends here -->
+  <!--BIG  Banner  here -->
 
 
   <section class="contact-us">
@@ -81,14 +61,6 @@ function contact_us($atts, $content = null)
                         <?php
                         echo do_shortcode('[contact-form-7 id="' . $contact_form . '"]');
                         ?>
-
-
-                        <!-- <div class="col-md-6 col-sm-12">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="Your name" required="">
-                            </fieldset>
-                          </div> -->
-
                       </div>
                     </form>
                   </div>
