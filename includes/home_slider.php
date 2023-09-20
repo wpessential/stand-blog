@@ -69,14 +69,9 @@ function home_slider($atts, $content = null)
 
           <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span
                 aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span
-                aria-label="Next">›</span></button>
-          </div>
-          <div class="owl-dots"><button role="button" class="owl-dot">
-              <span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button"
-              class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button
-              role="button" class="owl-dot active"><span></span></button><button role="button"
-              class="owl-dot"><span></span></button>
-          </div>
+                aria-label="Next">›</span></button></div>
+          <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button"
+              class="owl-dot"><span></span></button></div>
         </div>
       </div>
     </div>

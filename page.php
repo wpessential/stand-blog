@@ -1,9 +1,5 @@
 <?php
-/* 
-Template Name: Shortcode Page
-*
-*
-*/
+
 get_header();
 
 while (have_posts()) {
