@@ -168,16 +168,24 @@ function register_shortcode()
 
 	include_once(get_template_directory() . '\includes\home_slider.php');
 	include_once(get_template_directory() . '\includes\home_shortcode.php');
+	include_once(get_template_directory() . '\includes\big_banner_shortcode.php');
 	include_once(get_template_directory() . '\includes\contact_shortcode.php');
 	include_once(get_template_directory() . '\includes\blog_entries_shortcode.php');
+	include_once(get_template_directory() . '\includes\small_banner_shortcode.php');
+
+	
+
 
 
 
 	add_shortcode('about', 'firstabout'); // this adds  the short code in function first_about and it has the tag about
 	add_shortcode('slider', 'home_slider');
 	add_shortcode('home', 'home_shortcode');
+	add_shortcode('big_banner','big_banner_shortcode');
 	add_shortcode('contact', 'contact_us');
 	add_shortcode('blogs', 'blog_entries');
+	add_shortcode('small_banner','small_banner_shortcode');
+	
 
 
 }

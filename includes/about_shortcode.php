@@ -32,8 +32,6 @@ function firstabout($atts, $content = null)
     'behance_link' => '',
     'show_linkedin' => '',
     'linkedin_link' => '',
-    'banner_title' => '',
-    'banner_heading' => '',
 
 
   );

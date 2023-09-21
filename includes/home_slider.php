@@ -92,5 +92,3 @@ function home_slider($atts, $content = null)
 
   return ob_get_clean();
 }
-
-/// iss ka short oced karna ha aur baki jo khusch reh gya ha wo bhi karna ha 

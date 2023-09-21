@@ -1,3 +1,6 @@
+
+<?php  ?>
+
 <?php
 function contact_us($atts, $content = null)
 {
@@ -36,9 +39,7 @@ function contact_us($atts, $content = null)
 
 
 
-
   <!--BIG  Banner  here -->
-
 
   <section class="contact-us">
     <div class="container">
@@ -127,4 +128,6 @@ function contact_us($atts, $content = null)
 
 
 
-<?php } ?>
+<?php 
+  return ob_get_clean();
+} ?>

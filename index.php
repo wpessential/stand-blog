@@ -2,7 +2,6 @@
 
 get_header();
 
-
 ?>
 <section class="blog-posts grid-system">
     <div class="container">
@@ -80,15 +79,15 @@ get_header();
                 </div>
             </div>
             <?php if (is_active_sidebar('sidebar-1')) { ?>
-                    <div class="col-lg-4">
-                        <div class="sidebar">
-                            <div class="row">
-                                <?php dynamic_sidebar('sidebar-1'); ?>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="row">
+                            <?php dynamic_sidebar('sidebar-1'); ?>
 
-                            </div>
                         </div>
                     </div>
-                <?php  } ?>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>

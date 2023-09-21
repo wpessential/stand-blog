@@ -1,5 +1,5 @@
 <?php
-function contact_us($atts, $content = null)
+function big_banner_shortcode($atts, $content = null)
 {
   $user_inputs = array(
 
@@ -38,3 +38,8 @@ function contact_us($atts, $content = null)
         </div>
       </section>
     </div>
+
+
+    <?php
+  return ob_get_clean();
+}
