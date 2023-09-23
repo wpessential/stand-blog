@@ -68,11 +68,135 @@ if (!function_exists('myfirsttheme_setup')):
 		add_image_size('standblog-home-post', 770, 340, true);
 		add_image_size('standblog-about-image', 1170, 550, true);
 		add_image_size('standblog-post-details', 770, 340, true);
-		add_image_size('standblog-comment-pics',100, 100, true);
+		add_image_size('standblog-comment-pics', 100, 100, true);
+
+
+		///////////////////////////////////////////////////////////
+
+		////     //// ///// /////// /////     //////    ////  ///     ///                                                    
+		// //  //  // //      //   //   //    //   // //   //   //  //                                          
+		//   //    // /////   //   ///////    //////  //   //     //                                          
+		//         // //      //   //   //    //   // //   //   //  //                                           
+		//         // /////   //   //   //    //////   ////   ///     ///                                  
+
+		// These lines of code add actions to WordPress. Actions are events that trigger specific functions.
+		add_action('add_meta_boxes', 'create_metabox', 10, 2);
+
+		// This is the beginning of a function called "my_metabox," which creates a custom meta box.
+		function create_metabox($post_type, $post)
+		{
+
+			// These lines define an array of screen names where the meta box should appear (posts and pages).
+			$screens_name = ['post', 'page'];
+
+			// This line converts the $post variable into an array.
+			$args = (array) $post;
+
+			// This line adds a custom meta box to the specified screens with a title and callback function.
+			add_meta_box('my_test_meta_box', __('Metabox for Banner', 'register-metabox'), 'my_metabox_callback', $screens_name, 'advanced', 'high', $args);
+
+
+
+		}
+		///////////////////////////////////////////////////////////////////////////////////////
+
+
+		add_action('save_post', 'save_my_metabox', 10, 1);
+		// This is the beginning of a function called "save_my_metabox," which handles saving data from the meta box.
+		function save_my_metabox($post_id)
+		{
+			// Check if our nonce is set (a security token).
+			if (!isset($_POST['register_metabox_nonce_verification_nonce'])) {
+				return $post_id;
+			}
+
+			// Retrieve the nonce from the form.
+			$nonce = $_POST['register_metabox_nonce_verification_nonce'];
+
+			// Verify that the nonce is valid for security.
+			if (!wp_verify_nonce($nonce, 'register_metabox_nonce_verification')) {
+				return $post_id;
+			}
+
+			// Check if the WordPress system is doing an autosave, and if so, do nothing.
+			if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+				return $post_id;
+			}
+
+
+			$show = $_POST['banner_show'] ?? '';
+			// Update the post's metadata with the "banner_title" value.
+			update_post_meta($post_id, 'banner_show', $show);
+
+			// Get the value from the "banner_title" field in the form or provide an empty string if not set.
+			$title = $_POST['banner_title'] ?? '';
+			// Update the post's metadata with the "banner_title" value.
+			update_post_meta($post_id, 'banner_title', $title);
+
+			// Get the value from the "banner_subtitle" field in the form or provide an empty string if not set.
+			$subtitle = $_POST['banner_subtitle'] ?? '';
+			// Update the post's metadata with the "banner_subtitle" value.
+			update_post_meta($post_id, 'banner_subtitle', $subtitle);
+
+			$image = $_POST['banner_image'] ?? '';
+			// Update the post's metadata with the "banner_image" value.
+			update_post_meta($post_id, 'banner_image', $image);
+		}
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// This is the beginning of a function called "my_metabox_callback," which displays the content of the meta box.
+		function my_metabox_callback($args)
+		{
+			// Add a security nonce field to the form.we will set ut here first and then we used it above
+			wp_nonce_field('register_metabox_nonce_verification', 'register_metabox_nonce_verification_nonce');
+
+			$show = get_post_meta($args->ID, 'banner_show', true);
+			// Get the current value of the "banner_title" meta field.
+			$banner_title = get_post_meta($args->ID, 'banner_title', true);
+			// Get the current value of the "banner_subtitle" meta field.
+			$banner_subtitle = get_post_meta($args->ID, 'banner_subtitle', true);
+			// Get the current value of the "banner_image" meta field.
+			$image = get_post_meta($args->ID, 'banner_image', true);
+			?>
+
+			<label for="show_banner" style="width:150px; display:inline-block;">Show Banner</label>
+			<input type="checkbox" name="show_banner" id="Show_banner" >
+			<br>
+			<br>
+			
+			<!-- Display an input field for "banner_title" with a label. -->
+			<label for="banner_title" style="width:150px; display:inline-block;">
+				<?php echo esc_html__('Banner Title', 'register-metabox'); ?>
+			</label>
+			<input type="text" name="banner_title" id="banner_title" class="banner_title"
+				value="<?php echo esc_attr($banner_title); ?>" style="width:300px;" />
+			<br>
+			<br>
+
+			<!-- Display an input field for "banner_subtitle" with a label. -->
+			<label for="banner_subtitle" style="width:150px; display:inline-block;">
+				<?php echo esc_html__('Banner Subtitle', 'register-metabox'); ?>
+			</label>l
+			<input type="text" name="banner_subtitle" id="banner_subtitle" class="banner_subtitle"
+				value="<?php echo esc_attr($banner_subtitle); ?>" style="width:300px;" />
+			<br>
+			<br>
+
+			<label for="banner_image" style="width:150px; display:inline-block;">
+			<?php echo esc_html__('Banner Image', 'register-metabox'); ?>
+			</label>
+			<input type="text" name="baner_image" id="banner_image" 
+			value="<?php echo esc_attr($image); ?>" style="width:300px;" />
+
+
+			<?php
+		}
 
 
 
 	}
+
 endif; // myfirsttheme_setup
 add_action('after_setup_theme', 'myfirsttheme_setup');
 // add_action('init', 'myfirsttheme_setup');
@@ -173,7 +297,7 @@ function register_shortcode()
 	include_once(get_template_directory() . '\includes\blog_entries_shortcode.php');
 	include_once(get_template_directory() . '\includes\small_banner_shortcode.php');
 
-	
+
 
 
 
@@ -181,11 +305,11 @@ function register_shortcode()
 	add_shortcode('about', 'firstabout'); // this adds  the short code in function first_about and it has the tag about
 	add_shortcode('slider', 'home_slider');
 	add_shortcode('home', 'home_shortcode');
-	add_shortcode('big_banner','big_banner_shortcode');
+	add_shortcode('big_banner', 'big_banner_shortcode');
 	add_shortcode('contact', 'contact_us');
 	add_shortcode('blogs', 'blog_entries');
-	add_shortcode('small_banner','small_banner_shortcode');
-	
+	add_shortcode('small_banner', 'small_banner_shortcode');
+
 
 
 }
