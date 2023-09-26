@@ -8,6 +8,10 @@ if (!isset($content_width)) {
 	$content_width = 800; /* pixels */
 }
 
+
+require_once get_template_directory() . '/tgm-plugin/required_plugins.php';
+
+
 if (!function_exists('myfirsttheme_setup')):
 	/**
 	 * Sets up theme defaults and registers support for various
@@ -73,12 +77,12 @@ if (!function_exists('myfirsttheme_setup')):
 
 		///////////////////////////////////////////////////////////
 
-		////     //// ///// /////// /////     //////    ////  ///     ///                                                    
-		// //  //  // //      //   //   //    //   // //   //   //  //                                          
-		//   //    // /////   //   ///////    //////  //   //     //                                          
-		//         // //      //   //   //    //   // //   //   //  //                                           
-		//         // /////   //   //   //    //////   ////   ///     ///                                  
-
+	//	||||    |||| ||||| ||||||| |||||     ||||||   |||||  |||     |||                                                    
+	//	|| ||  || || ||      ||   ||   ||    ||   || ||   ||   ||  ||                                          
+	//	||   ||   || |||||   ||   |||||||    //////  ||   ||     ||                                     
+	//	||        || ||      ||   ||   ||    ||   || ||   ||   ||  ||                                           
+	//	||        || |||||   ||   ||   ||    ||||||   |||||  |||    |||                                 
+ 
 		// These lines of code add actions to WordPress. Actions are events that trigger specific functions.
 		add_action('add_meta_boxes', 'create_metabox', 10, 2);
 
@@ -124,9 +128,10 @@ if (!function_exists('myfirsttheme_setup')):
 			}
 
 
-			$show = $_POST['banner_show'] ?? '';
+			//$show = $_POST['banner_show'] ?? '0';
+			$show= isset($_POST['show_banner']) ? '1' : '0';
 			// Update the post's metadata with the "banner_title" value.
-			update_post_meta($post_id, 'banner_show', $show);
+			update_post_meta($post_id, 'show_banner', $show);
 
 			// Get the value from the "banner_title" field in the form or provide an empty string if not set.
 			$title = $_POST['banner_title'] ?? '';
@@ -151,17 +156,25 @@ if (!function_exists('myfirsttheme_setup')):
 			// Add a security nonce field to the form.we will set ut here first and then we used it above
 			wp_nonce_field('register_metabox_nonce_verification', 'register_metabox_nonce_verification_nonce');
 
-			$show = get_post_meta($args->ID, 'banner_show', true);
+			$show = get_post_meta($args->ID, 'show_banner', true);
 			// Get the current value of the "banner_title" meta field.
 			$banner_title = get_post_meta($args->ID, 'banner_title', true);
 			// Get the current value of the "banner_subtitle" meta field.
 			$banner_subtitle = get_post_meta($args->ID, 'banner_subtitle', true);
 			// Get the current value of the "banner_image" meta field.
-			$image = get_post_meta($args->ID, 'banner_image', true);
+			$banner_image = get_post_meta($args->ID, 'banner_image', true);
 			?>
 
 			<label for="show_banner" style="width:150px; display:inline-block;">Show Banner</label>
-			<input type="checkbox" name="show_banner" id="Show_banner" >
+			<?php if ($show==1) { ?>
+			<input type="checkbox" name="show_banner" id="Show_banner" checked>
+			<?php } 
+			else {
+				?>
+				<input type="checkbox" name="show_banner" id="Show_banner" >
+			<?php
+			}
+			?>
 			<br>
 			<br>
 			
@@ -177,7 +190,7 @@ if (!function_exists('myfirsttheme_setup')):
 			<!-- Display an input field for "banner_subtitle" with a label. -->
 			<label for="banner_subtitle" style="width:150px; display:inline-block;">
 				<?php echo esc_html__('Banner Subtitle', 'register-metabox'); ?>
-			</label>l
+			</label>
 			<input type="text" name="banner_subtitle" id="banner_subtitle" class="banner_subtitle"
 				value="<?php echo esc_attr($banner_subtitle); ?>" style="width:300px;" />
 			<br>
@@ -186,11 +199,12 @@ if (!function_exists('myfirsttheme_setup')):
 			<label for="banner_image" style="width:150px; display:inline-block;">
 			<?php echo esc_html__('Banner Image', 'register-metabox'); ?>
 			</label>
-			<input type="text" name="baner_image" id="banner_image" 
-			value="<?php echo esc_attr($image); ?>" style="width:300px;" />
+			<input type="text" name="banner_image" id="banner_image" 
+			value="<?php echo esc_attr($banner_image); ?>" style="width:300px;" />
 
-
+			
 			<?php
+			echo $show;
 		}
 
 
@@ -207,6 +221,16 @@ add_action('after_setup_theme', 'myfirsttheme_setup');
 //  registering and enqueing new files
 
 
+
+
+
+
+//   ||||||   ||||    ||||| |||||| ||||||     ||||| |||    ||  ||||    ||   || |||||                                                                 
+//   ||  ||| ||       ||      ||   ||  |||    ||    || ||  || ||  ||   ||   || ||                                                   
+//   ||||||  ||       |||||   ||   ||||||     ||||| ||  || || ||  ||   ||   || |||||                                                            
+//   |||||    ||  ||||    ||  ||   |||||      ||    ||   |||| ||  ||   ||   || ||                                                 
+//   ||  |||    ||| || |||||  ||   ||  |||    ||||| ||    |||  ||||||| ||||||| |||||                                                                  
+                                                                                                                                                                                          
 
 
 
