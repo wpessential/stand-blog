@@ -67,9 +67,11 @@ while (have_posts()):
                       <li>
                         <?php echo get_the_author_link(); ?>
                       </li>
-                      <li><a href="#">
-                          <?php echo get_the_date(); ?>
-                        </a></li>
+                      <li>
+                          <a href="<?php echo get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d')); ?>">
+                            <?php echo get_the_date(); ?>
+                          </a>
+                          </li>
                       <li><a href="#">
                           <?php echo get_comments_number(); ?> Comments
                         </a></li>

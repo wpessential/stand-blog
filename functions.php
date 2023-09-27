@@ -148,7 +148,7 @@ if (!function_exists('myfirsttheme_setup')):
 			update_post_meta($post_id, 'banner_image', $image);
 		}
 
-		////////////////////////////////////////////////////////////////////////////////////////////////////
+		//|//////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// This is the beginning of a function called "my_metabox_callback," which displays the content of the meta box.
 		function my_metabox_callback($args)
@@ -176,6 +176,7 @@ if (!function_exists('myfirsttheme_setup')):
 			}
 			?>
 			<br>
+			<p>Check the checkbox to show the banner on the page </p>
 			<br>
 			
 			<!-- Display an input field for "banner_title" with a label. -->
@@ -185,6 +186,7 @@ if (!function_exists('myfirsttheme_setup')):
 			<input type="text" name="banner_title" id="banner_title" class="banner_title"
 				value="<?php echo esc_attr($banner_title); ?>" style="width:300px;" />
 			<br>
+			<p>This is for the title of the banner</p>
 			<br>
 
 			<!-- Display an input field for "banner_subtitle" with a label. -->
@@ -194,6 +196,7 @@ if (!function_exists('myfirsttheme_setup')):
 			<input type="text" name="banner_subtitle" id="banner_subtitle" class="banner_subtitle"
 				value="<?php echo esc_attr($banner_subtitle); ?>" style="width:300px;" />
 			<br>
+			<p>This is for thr subtitle of the banner</p>
 			<br>
 
 			<label for="banner_image" style="width:150px; display:inline-block;">
@@ -201,10 +204,11 @@ if (!function_exists('myfirsttheme_setup')):
 			</label>
 			<input type="text" name="banner_image" id="banner_image" 
 			value="<?php echo esc_attr($banner_image); ?>" style="width:300px;" />
+			<br>
+			<p>Enter your background image id from the media </p> 
 
 			
 			<?php
-			echo $show;
 		}
 
 
@@ -272,11 +276,11 @@ if (!function_exists('enqueue_files')) {
 		wp_enqueue_script('jquery');
 
 		wp_enqueue_script('bootstrap');
-		wp_enqueue_script('custom-script');
 		wp_enqueue_script('owl-script');
 		wp_enqueue_script('slick-script');
 		wp_enqueue_script('isotope-script');
 		wp_enqueue_script('accordions-script');
+		wp_enqueue_script('custom-script');
 		// =====================================================
 	}
 }

@@ -1,13 +1,13 @@
 <?php
-
 get_header();
 
+echo do_shortcode('[big_banner]'); // adding big banner 
 ?>
 <section class="blog-posts grid-system">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <div class="all-blog-posts">
+                <div class="all-blog-posts">F
                     <div class="row">
                         <?php while (have_posts()):
                             the_post();
@@ -29,12 +29,15 @@ get_header();
                                             </h4>
                                         </a>
                                         <ul class="post-info">
-                                            <li><a href="#">
-                                                    <?php echo get_the_author_link(); ?>
-                                                </a></li>
-                                            <li><a href="#">
+                                            <li>
+                                                <?php echo get_the_author_posts_link(); // gets the author link but wheb we clikck on it it will use the slug in the searchbar and and show all related post to the author ?>
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="<?php echo get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d')); // this will show the datew but as we click on it it will show the post which were posted on that date?>">
                                                     <?php echo get_the_date(); ?>
-                                                </a></li>
+                                                </a>
+                                            </li>
                                             <li><a href="#">
                                                     <?php echo get_comments_number(); ?> Comments
                                                 </a></li>

@@ -75,7 +75,7 @@ function firstcontact($atts, $content = null)
                       <h5>
                         <?php echo esc_html($address); ?>
                       </h5>
-                      <span>S
+                      <span>
                         <?php echo esc_html($address_title); ?>
                       </span>
                     </li>

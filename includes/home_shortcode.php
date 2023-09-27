@@ -23,7 +23,7 @@ function home_shortcode($atts, $content = null)
   ?>
 
 
-     <!-- SMALL BANNER HERE -->
+  <!-- SMALL BANNER HERE -->
 
 
 
@@ -64,12 +64,14 @@ function home_shortcode($atts, $content = null)
                           </h4>
                         </a>
                         <ul class="post-info">
-                          <li><a href="#">
-                              <?php echo get_the_author_link(); ?>
-                            </a></li>
-                          <li><a href="#">
-                              <?php echo get_the_date(); ?>
-                            </a></li>
+                          <li>
+                            <?php echo get_the_author_posts_link(); ?>
+                          </li>
+                          <li>
+                          <a href="<?php echo get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d')); ?>">
+                            <?php echo get_the_date(); ?>
+                          </a>
+                          </li>
                           <li><a href="#">
                               <?php echo get_comments_number(); ?> Comments
                             </a></li>
@@ -105,10 +107,12 @@ function home_shortcode($atts, $content = null)
               ?>
             </div>
             <div class="col-lg-12">
-          <div class="main-button">
-            <a href="<?php echo esc_url($btn_link); ?>"><?php echo esc_html($btn_title); ?></a>
-          </div>
-        </div>
+              <div class="main-button">
+                <a href="<?php echo esc_url($btn_link); ?>">
+                  <?php echo esc_html($btn_title); ?>
+                </a>
+              </div>
+            </div>
           </div>
           <?php if ($sidebar == 'show') { ?>
           </div>
