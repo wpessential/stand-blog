@@ -23,6 +23,7 @@ if (!function_exists('myfirsttheme_setup')):
 	 */
 	function myfirsttheme_setup()
 	{
+
 		add_theme_support('post-thumbnails');
 		add_theme_support('title-tag');
 		add_theme_support('responsive-embeds');
@@ -340,4 +341,9 @@ function register_shortcode()
 
 
 
+}
+
+
+if(function_exists("Kirki")){
+	require_once get_template_directory() . '/config/config.php';
 }

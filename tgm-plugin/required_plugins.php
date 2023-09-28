@@ -67,8 +67,18 @@ function standblog_register_required_plugins()
 			// https://wordpress.org/plugins/contact-form-7 we will pick slug from their website 
 			'required' => true,
 		),
+		array(
+            'name'     => 'Kirki Customizer Framework',
+            'slug'     => 'kirki',
+            'required' => true, // Set to true to require the plugin.
+        ),
+        // Add more plugins as needed.
+    );
 
-	);
+   
+
+
+
 
 	/*
 	 * Array of configuration settings. Amend each line as needed.
