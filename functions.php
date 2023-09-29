@@ -84,6 +84,10 @@ if (!function_exists('myfirsttheme_setup')):
 	//	||        || ||      ||   ||   ||    ||   || ||   ||   ||  ||                                           
 	//	||        || |||||   ||   ||   ||    ||||||   |||||  |||    |||                                 
  
+
+
+// IT IS BEING USED IN big_banner_shortcode.php
+
 		// These lines of code add actions to WordPress. Actions are events that trigger specific functions.
 		add_action('add_meta_boxes', 'create_metabox', 10, 2);
 

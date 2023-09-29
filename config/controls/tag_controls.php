@@ -17,26 +17,15 @@ new \Kirki\Field\Checkbox_Switch(
 );
 
 
-new \Kirki\Field\Background(
+new \Kirki\Field\Image(
 	[
 		'settings'    => 'tag_background_setting',// saves values in the database ,serves as ID
 		'label'       => esc_html__( 'Banner Background', 'standblog' ),
 		'description' => esc_html__( 'Select the background image from Media ', 'standblog' ),
 		'section'     => 'tag_section', // id of the section in whicg u want to include this control
-		'default'     => [
-			'background-color'      => 'rgba(20,20,20,.8)',
-			'background-image'      => '',
-			'background-repeat'     => 'repeat',
-			'background-position'   => 'center center',
-			'background-size'       => 'cover',
-			'background-attachment' => 'scroll',
+		'choices' => [
+			'save_as' => 'id',
 		],
-		'transport'   => 'auto',
-		// 'output'      => [
-		// 	[
-		// 		'element' => 'body',
-		// 	],
-		// ],
         // Serves as condition if true then proceed same as if(){ ....}
         'active_callback' => [
             [
@@ -150,3 +139,19 @@ new \Kirki\Field\Checkbox_Switch(
         
 	]
 );
+
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'tag_tags_setting',// saves values in the database ,serves as ID
+		'label'       => esc_html__( 'Show Tags', 'standblog' ),
+		'description' => esc_html__( 'Switch On and OFF  to show and hide Tags of post ', 'standblog' ),
+		'section'     => 'tag_section',// id of the section in whicg u want to include this control
+		'default'     => 'on',
+		'choices'     => [ 
+
+			0 => esc_html__( 'hide', 'standblog' ),
+            1 => esc_html__( 'show', 'standblog' ),
+		],
+        
+	]
+	);

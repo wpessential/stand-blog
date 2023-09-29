@@ -1,18 +1,21 @@
 <?php
 get_header();
-$banner_show = get_theme_mod('blog_banner_display_setting');
-$banner_title = get_theme_mod('blog_title_setting');
-$banner_subtitle = get_theme_mod('blog_subtitle_setting');
-$banner_image = get_theme_mod('blog_background_setting');
+
+$banner_show = get_theme_mod('archive_banner_display_setting');
+// print_r($banner_show);exit;
+$banner_title = get_theme_mod('archive_title_setting');
+$banner_subtitle = get_theme_mod('archive_subtitle_setting');
+$banner_image = get_theme_mod('archive_background_setting');
+
 echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_title' banner_subtitle='$banner_subtitle' banner_image='$banner_image']"); // adding big banner 
 
 ?>
 <section class="blog-posts grid-system">
-    <div class="container">
+  <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="all-blog-posts">
-                <div class="row">
+                    <div class="row">
                         <?php while (have_posts()):
                             the_post();
 
@@ -24,7 +27,7 @@ echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_
                                         <?php the_post_thumbnail('standblog-blog-post') ?>
                                     </div>
                                     <div class="down-content">
-                                    <?php if(true== get_theme_mod('blog_category_setting')){ ?>
+                                    <?php if(true== get_theme_mod('archive_category_setting')){ ?>
                                         <span>
                                             <?php the_category(', '); ?>
                                         </span>
@@ -35,12 +38,12 @@ echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_
                                             </h4>
                                         </a>
                                         <ul class="post-info">
-                                        <?php if(true== get_theme_mod('blog_author_setting')){ ?>
+                                        <?php if(true== get_theme_mod('archive_author_setting')){ ?>
                                             <li>
                                                 <?php echo get_the_author_posts_link(); // gets the author link but wheb we clikck on it it will use the slug in the searchbar and and show all related post to the author ?>
                                             </li>
                                             <?php } ?>
-                                            <?php if(true== get_theme_mod('blog_post_date_setting')){ ?>
+                                            <?php if(true== get_theme_mod('archive_post_date_setting')){ ?>
                                             <li>
                                                 <a
                                                     href="<?php echo get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d')); // this will show the datew but as we click on it it will show the post which were posted on that date?>">
@@ -48,7 +51,7 @@ echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_
                                                 </a>
                                             </li>
                                             <?php } ?>
-                                            <?php if(true== get_theme_mod('blog_post_comments_setting')){ ?>
+                                            <?php if(true== get_theme_mod('archive_post_comments_setting')){ ?>
                                             <li><a href="#">
                                                     <?php echo get_comments_number(); ?> Comments
                                                 </a></li>
@@ -60,7 +63,7 @@ echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <ul class="post-tags">
-                                                    <?php if(true== get_theme_mod('blog_tags_setting')){ ?>
+                                                    <?php if(true== get_theme_mod('archive_tags_setting')){ ?>
                                                         <li><i class="fa fa-tags"></i></li>
                                                         <?php the_tags('<li>', ', ', '</li>') ?>
                                                     </ul>
@@ -105,7 +108,7 @@ echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_
                 </div>
             <?php } ?>
         </div>
-    </div>
+  </div>
 </section>
 
 <?php

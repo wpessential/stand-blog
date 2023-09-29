@@ -3,7 +3,7 @@
 get_header();
 
 
-echo do_shortcode('[big_banner]'); // adding big banner 
+echo do_shortcode('[big_banner meta_banner="1"]'); // adding big banner 
 
 while (have_posts()) {
 

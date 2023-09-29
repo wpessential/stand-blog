@@ -17,27 +17,16 @@ new \Kirki\Field\Checkbox_Switch(
 );
 
 
-new \Kirki\Field\Background(
+new \Kirki\Field\Image(
 	[
 		'settings'    => 'blog_background_setting',// saves values in the database ,serves as ID
 		'label'       => esc_html__( 'Banner Background', 'standblog' ),
 		'description' => esc_html__( 'Select the background image from Media ', 'standblog' ),
 		'section'     => 'blog_section', // id of the section in whicg u want to include this control
-		'default'     => [
-			'background-color'      => 'rgba(20,20,20,.8)',
-			'background-image'      => '',
-			'background-repeat'     => 'repeat',
-			'background-position'   => 'center center',
-			'background-size'       => 'cover',
-			'background-attachment' => 'scroll',
+		'choices' => [
+			'save_as' => 'id',
 		],
-		'transport'   => 'auto',
-		// 'output'      => [
-		// 	[
-		// 		'element' => 'body',
-		// 	],
-		// ],
-        // Serves as condition if true then proceed same as if(){ ....}
+		// Serves as condition if true then proceed same as if(){ ....}
         'active_callback' => [
             [
                 'setting'  => 'blog_banner_display_setting', // uss contol ki id jis sa app present control (Background ki id 'background_setting ' ko relate karna chahta hain)
@@ -150,3 +139,4 @@ new \Kirki\Field\Checkbox_Switch(
         
 	]
 );
+

@@ -1,11 +1,4 @@
-<?php 
-
-
-require_once get_template_directory() . '/config/panels/panel.php';
-require_once get_template_directory() . '/config/sections/section.php';
-require_once get_template_directory() . '/config/controls/date_control.php';
-
-
+<?php
 //   FOR BLOG SETTINGS PANEL 
 require_once get_template_directory() . '/config/panels/blog_settings.php';
 require_once get_template_directory() . '/config/sections/blog_section.php';
@@ -30,3 +23,8 @@ require_once get_template_directory() . '/config/controls/tag_controls.php';
 // For Blog detail page Settings
 require_once get_template_directory() . '/config/sections/blog_detail_section.php';
 require_once get_template_directory() . '/config/controls/blog_detail_controls.php';
+
+// For Search  page Settings
+require_once get_template_directory() . '/config/sections/search_section.php';
+require_once get_template_directory() . '/config/controls/search_controls.php';
+
