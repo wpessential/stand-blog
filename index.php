@@ -4,7 +4,7 @@ $banner_show = get_theme_mod('blog_banner_display_setting');
 $banner_title = get_theme_mod('blog_title_setting');
 $banner_subtitle = get_theme_mod('blog_subtitle_setting');
 $banner_image = get_theme_mod('blog_background_setting');
-echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_title' banner_subtitle='$banner_subtitle' banner_image='$banner_image']"); // adding big banner 
+echo do_shortcode("[big_banner banner_show='$banner_show' banner_title='$banner_title' banner_subtitle='$banner_subtitle' banner_image='$banner_image' meta_banner='1']"); // adding big banner 
 
 ?>
 <section class="blog-posts grid-system">
